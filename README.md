@@ -33,48 +33,22 @@ terminal, driven entirely from the keyboard, and pure Rust (no `libdbus` require
   detail view.
 - Session bus by default, `--system` for the system bus, `--list` for scripting.
 
-## Screenshots
+## Demo
 
-Exploring `org.freedesktop.Notifications`:
+### Explore services, objects and properties
 
-```text
-┌ services (1)  /org.freedeskto┐┌ objects ──────────────────────────┐┌ details ────────────────────────────────────────────┐
-│» org.freedesktop.Notification││  ▾ /                              ││  [-] org.freedesktop.DBus.Properties                │
-│                              ││    ▾ org                          ││      ƒ Get(s interface_name, s property_name) → (v v│
-│                              ││      ▾ freedesktop                ││      ƒ GetAll(s interface_name) → (a{sv} properties)│
-│                              ││»       · Notifications            ││      ƒ Set(s interface_name, s property_name, v valu│
-│                              ││                                   ││      ~ PropertiesChanged(s interface_name, a{sv} cha│
-│                              ││                                   ││  [-] org.freedesktop.DBus.Introspectable            │
-│                              ││                                   ││      ƒ Introspect() → (s xml_data)                  │
-│                              ││                                   ││» [-] org.freedesktop.DBus.Peer                      │
-│                              ││                                   ││      ƒ Ping()                                       │
-│                              ││                                   ││      ƒ GetMachineId() → (s machine_uuid)            │
-│                              ││                                   ││  [-] org.freedesktop.Notifications                  │
-│                              ││                                   ││      ƒ Notify(s arg_0, u arg_1, s arg_2, s arg_3, s │
-│                              ││                                   ││      ƒ CloseNotification(u arg_0)                   │
-│                              ││                                   ││      ƒ GetCapabilities() → (as arg_0)               │
-│                              ││                                   ││      ƒ GetServerInformation() → (s arg_0, s arg_1, s│
-│                              ││                                   ││      ~ NotificationClosed(u arg_0, u arg_1)         │
-│                              ││                                   ││      ~ ActionInvoked(u arg_0, s arg_1)              │
-│                              ││                                   ││      ~ ActivationToken(u arg_0, s arg_1)            │
-│                              ││                                   ││                                                     │
-└──────────────────────────────┘└───────────────────────────────────┘└─────────────────────────────────────────────────────┘
- session bus   introspected /org/freedesktop/Notifications   ?:help  q:quit  m:monitor  Tab:pane  /:filter
-```
+![Exploring a service: filter, walk the object tree, read property values](https://raw.githubusercontent.com/LoganBaird-Levenick/busk/master/assets/explore.gif)
 
-Live signal monitor, filtered to `org.example`:
+### Call methods with typed arguments
 
-```text
-┌  signal monitor, times UTC (4)  /org.example  ───────────────────────────────────────────────────────────────────────────┐
-│  03:02:44 org.example.Player.TrackChanged  /demo/Player  "hello world"  42  ["a", "b"]                                   │
-│  03:02:44 org.example.Player.TrackChanged  /demo/Player  true                                                            │
-│  03:02:44 org.example.Player.Stopped  /demo/Player  ()                                                                   │
-│» 03:02:44 org.example.Mixer.VolumeChanged  /demo/Mixer  0.75                                                             │
-│                                                                                                                          │
-│                                                                                                                          │
-└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
- session bus   signal monitor started   ?:help  Esc:back  /:filter  Enter:details  x:clear
-```
+![Calling Echo and Add, including an argument error caught before sending](https://raw.githubusercontent.com/LoganBaird-Levenick/busk/master/assets/call.gif)
+
+### Watch signals live
+
+![Live signal monitor with filter and per-signal detail view](https://raw.githubusercontent.com/LoganBaird-Levenick/busk/master/assets/monitor.gif)
+
+<sub>Recorded with [VHS](https://github.com/charmbracelet/vhs) against a private bus that only
+hosts a small demo service, so no real desktop services appear.</sub>
 
 ## Install
 
