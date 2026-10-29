@@ -1,0 +1,29 @@
+[package]
+name = "busk"
+version = "0.1.0"
+edition = "2021"
+description = "A keyboard-driven D-Bus explorer and debugger TUI: browse services and objects, call methods, read properties, and watch signals live."
+authors = ["Logan Baird-Levenick"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/LoganBaird-Levenick/busk"
+homepage = "https://github.com/LoganBaird-Levenick/busk"
+rust-version = "1.88"
+keywords = ["dbus", "tui", "debugger", "terminal", "linux"]
+categories = ["command-line-utilities", "development-tools::debugging"]
+exclude = [".github/", "/target", ".cargo/"]
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+crossterm = { version = "0.28", features = ["event-stream"] }
+futures-util = "0.3"
+ratatui = "0.29"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time"] }
+zbus = { version = "4", default-features = false, features = ["tokio"] }
+zbus_xml = "4"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
