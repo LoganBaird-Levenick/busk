@@ -2,10 +2,16 @@
 name = "busk"
 version = "0.1.0"
 edition = "2021"
-description = "A keyboard-driven D-Bus explorer and debugger TUI — browse services, introspect objects, call methods, and monitor signals, all in your terminal."
+description = "A keyboard-driven D-Bus explorer and debugger TUI: browse services and objects, call methods, read properties, and watch signals live."
+authors = ["Logan Baird-Levenick"]
 license = "MIT"
-keywords = ["dbus", "tui", "debugger", "linux"]
-categories = ["command-line-utilities"]
+readme = "README.md"
+repository = "https://github.com/LoganBaird-Levenick/busk"
+homepage = "https://github.com/LoganBaird-Levenick/busk"
+rust-version = "1.88"
+keywords = ["dbus", "tui", "debugger", "terminal", "linux"]
+categories = ["command-line-utilities", "development-tools::debugging"]
+exclude = [".github/", "/target", ".cargo/"]
 
 [dependencies]
 anyhow = "1"
