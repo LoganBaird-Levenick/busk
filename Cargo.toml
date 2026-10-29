@@ -22,3 +22,8 @@ ratatui = "0.29"
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time"] }
 zbus = { version = "4", default-features = false, features = ["tokio"] }
 zbus_xml = "4"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
