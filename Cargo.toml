@@ -11,7 +11,7 @@ homepage = "https://github.com/LoganBaird-Levenick/busk"
 rust-version = "1.88"
 keywords = ["dbus", "tui", "debugger", "terminal", "linux"]
 categories = ["command-line-utilities", "development-tools::debugging"]
-exclude = [".github/", "/target", ".cargo/"]
+exclude = [".github/", "/target", ".cargo/", "/assets/"]
 
 [dependencies]
 anyhow = "1"
